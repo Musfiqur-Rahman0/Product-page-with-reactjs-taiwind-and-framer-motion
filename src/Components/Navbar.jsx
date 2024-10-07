@@ -9,17 +9,6 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  const mainVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.4, type: "spring", staggerChildren: 0.4 },
-    },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  };
 
   const navLinks = [
     { to: "/", label: "Home" },
@@ -73,6 +62,7 @@ const Navbar = () => {
                 <Link
                   to={mobileLink.to}
                   key={index}
+                  onClick={toggleMenu}
                   className="cursor-pointer hover:text-orange-600 "
                 >
                   {mobileLink.label}

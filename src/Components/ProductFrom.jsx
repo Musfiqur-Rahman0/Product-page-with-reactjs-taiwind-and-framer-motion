@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { services } from "../constent/constent";
 import { Link } from "react-router-dom";
 import Review from "./Review";
+import SizeGuide from "./SizeGuide";
 
 const ProductFrom = ({ setMainProduct, mainProduct }) => {
   const colors = ["#ff6f61", "#4a90e2", "#7ed321", "#333333"];
@@ -30,6 +31,12 @@ const ProductFrom = ({ setMainProduct, mainProduct }) => {
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
+  };
+
+  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+
+  const handleSizeGuideToggle = () => {
+    setIsSizeGuideOpen(!isSizeGuideOpen);
   };
 
   return (
@@ -88,9 +95,15 @@ const ProductFrom = ({ setMainProduct, mainProduct }) => {
       <div className="mt-4">
         <div className="flex justify-between items-center">
           <span className="text-[16px] text-gray-400">Size</span>
-          <div className="flex items-center justify-center gap-2 cursor-pointer">
+          <div
+            onClick={handleSizeGuideToggle}
+            className=" flex items-center justify-center gap-2 cursor-pointer"
+          >
             <p className="text-[16px] text-gray-400">Size Guide</p>
             <FaRuler />
+            {isSizeGuideOpen && (
+              <SizeGuide handleSizeGuideToggle={handleSizeGuideToggle} />
+            )}
           </div>
         </div>
         <div className="w-full flex mt-2 flex-wrap gap-3">
